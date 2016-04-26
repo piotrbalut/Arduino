@@ -5,9 +5,30 @@
     xmlns:local="using:Pbalut.Arduino.Dht22"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Pbalut.Arduino.Dht22.Controls"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="Temperature" HorizontalAlignment="Center" FontSize="40"/>
+        <ProgressRing Grid.Column="0" Grid.Row="1" x:Name="TemperatureProgressRing" IsActive="True"/>
+        <Grid Grid.Column="0" Grid.Row="1" x:Name="TemperatureGrid">
+            <TextBlock x:Name="TemperatureTextBlock" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="60" Foreground="Gray" />
+        </Grid>
+
+        <TextBlock Grid.Column="1" Grid.Row="0" Text="Humidity" HorizontalAlignment="Center" FontSize="40"/>
+        <ProgressRing Grid.Column="1" Grid.Row="1" x:Name="HumidityProgressRing" MinWidth="400" IsActive="True"/>
+        <Grid Grid.Column="1" Grid.Row="1" x:Name="HumidityGrid">
+            <controls:PieChart x:Name="HumidityChart" Radius="140" Segment360Color="DeepSkyBlue" SegmentColor="Teal" StrokeThickness="30" MaxWidth="350"/>
+            <TextBlock x:Name="HumidityTextBlock" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="60" Foreground="Gray" />
+        </Grid>
     </Grid>
 </Page>
